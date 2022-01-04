@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+	<link href="css/loopy.css" rel="stylesheet" />
+	<link href="css/balloon.css" rel="stylesheet" />
+
+</head>
+
+<body>
+	<main></main>
+	<div id="canvasses"></div>
+
+
+	<div id="toolbar"></div>
+	<div id="playbar"></div>
+	<div id="sidebar"></div>
+
+	<div id="modal_container">
+		<div id="modal_bg"></div>
+		<div id="modal">
+			<div id="modal_close">[×] CLOSE</div>
+			<div id="modal_page"></div>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<!-- Scripts! -->
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.35/Tone.js"
+	integrity="sha512-lnXhe/3DWFLkSDEO0+Hb2ygRAR5YskNl3pIUUNaVIWmG9BiPujrfjTL7MtOlKk74V5XflNuq9jj54TaMTYoe1A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/external_lib/p5.js" type="text/javascript"></script>
+<script src="js/external_lib/p5.sound.js" type="text/javascript"></script>
+<script src="js/sketch/bg.js" type="text/javascript"></script>
+
+<script src="js/helpers.js"></script>
+<script src="js/minpubsub.js"></script>
+<script src="js/Mouse.js"></script>
+<script src="js/Key.js"></script>
+
+<script src="js/Loopy.js?v=5"></script>
+<script src="js/Model.js?v=3"></script>
+<script src="js/Node.js?v=3"></script>
+<script src="js/Edge.js?v=2"></script>
+<script src="js/Label.js"></script>
+
+<script src="js/PageUI.js"></script>
+<script src="js/Sidebar.js?v=2"></script>
+<script src="js/Toolbar.js"></script>
+<script src="js/PlayControls.js"></script>
+<script src="js/Modal.js?v=4"></script>
+<script src="js/Ink.js"></script>
+<script src="js/Dragger.js"></script>
+<script src="js/Eraser.js"></script>
+<script src="js/Labeller.js"></script>
+
+<script>
+	
+	window.onload = function () {
+		const meter = new Tone.Meter();
+		const toneMic = new Tone.UserMedia().connect(meter);
+		toneMic.open().then(() => {
+			console.log("mic open");
+			setInterval(() => console.log(meter.getValue()), 500);
+		}).catch(e => {
+			console.log("mic not open");
+		});
+		window.loopy = new Loopy();
+	}
+</script>
